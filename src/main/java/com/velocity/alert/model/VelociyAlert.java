@@ -40,7 +40,7 @@ public class VelociyAlert {
 		contextVars.put("entityList", entityList);
 		String msg = va.parse(tmFile,contextVars);
 		
-		System.out.println("Parsed Msg:"+msg);
+		System.out.println("Parsed Msg:\n"+msg);
 	}
 
 	public static List getEntityList2()
