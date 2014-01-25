@@ -1,11 +1,17 @@
 SELECT 1 FROM TAB
 WHERE EXITS (
 	#foreach($entity in $entityList)
-		SELECT 1 FROM $entity.name
-		WHERE 
-		#foreach()
-			
+		#if($velocityCount > 1)
+		AND
 		#end
-		$velocityCount 
+		(SELECT 1 FROM $entity.name
+		WHERE 
+		#foreach($column in $entity.columns)
+			#if($velocityCount > 1)
+				AND
+			#end
+			$column.LHS $column.condition $column.RHS
+		#end
+		)
 	#end
 );
