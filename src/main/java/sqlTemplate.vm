@@ -1,0 +1,11 @@
+SELECT 1 FROM TAB
+WHERE EXITS (
+	#foreach($entity in $entityList)
+		SELECT 1 FROM $entity.name
+		WHERE 
+		#foreach()
+			
+		#end
+		$velocityCount 
+	#end
+);
