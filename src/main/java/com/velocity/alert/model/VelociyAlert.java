@@ -32,6 +32,7 @@ public class VelociyAlert {
 		tm.merge(context, sw);
 		return sw.toString();
 	}
+
 	public static void main(String[] args) {
 		VelociyAlert va = new VelociyAlert();
 		String tmFile = "src/main/java/sqlTemplate.vm";
