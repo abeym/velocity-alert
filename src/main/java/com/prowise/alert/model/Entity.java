@@ -1,4 +1,4 @@
-package com.velocity.alert.model;
+package com.prowise.alert.model;
 
 import java.util.List;
 

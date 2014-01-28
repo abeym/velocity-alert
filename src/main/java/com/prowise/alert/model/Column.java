@@ -1,4 +1,4 @@
-package com.velocity.alert.model;
+package com.prowise.alert.model;
 
 public class Column {
 	public String getLHS() {

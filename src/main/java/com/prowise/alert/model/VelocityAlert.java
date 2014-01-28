@@ -1,30 +1,45 @@
-package com.velocity.alert.model;
+package com.prowise.alert.model;
 
-import java.io.StringWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
+import org.apache.velocity.*;
+import org.apache.velocity.app.*;
 
-public class VelociyAlert {
+
+public class VelocityAlert {
 	
+	private VelocityEngine ve = new VelocityEngine();
+	public VelocityAlert(String vmPath)
+	{
+		Properties p = new Properties();
+		try {
+			p.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("velocity.properties"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		p.setProperty(Velocity.RUNTIME_LOG_LOGSYSTEM_CLASS, "org.apache.velocity.runtime.log.SystemLogChute");                        
+		//
+		p.setProperty("resource.loader", "class");
+		p.setProperty("class.resource.loader.description", "Velocity Classpath Resource Loader");
+		p.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		p.setProperty("file.resource.loader.path", vmPath+"/WEB-INF/classes//");
+		//
+		//Velocity.init(p);
+		ve.init(p);
+	}
 	public String parse(String tmFile, Map<String, Object> contextVars)
 	{
-		Velocity.init("src/main/java/velocity.properties");
 		VelocityContext context = new VelocityContext();
 		for (Map.Entry<String, Object> vars : contextVars.entrySet()) {
 			context.put(vars.getKey(), vars.getValue());
 		}
-
 		Template tm = null;
 		try {
-			tm = Velocity.getTemplate(tmFile);
+			//tm = Velocity.getTemplate(tmFile);
+			tm = ve.getTemplate(tmFile);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -34,8 +49,8 @@ public class VelociyAlert {
 	}
 
 	public static void main(String[] args) {
-		VelociyAlert va = new VelociyAlert();
-		String tmFile = "src/main/java/sqlTemplate.vm";
+		VelocityAlert va = new VelocityAlert("src/main/java/");
+		String tmFile = "sqlTemplate.vm";
 		Map<String, Object> contextVars = new HashMap<String, Object>();
 		List entityList = getEntityList();
 		contextVars.put("entityList", entityList);
@@ -46,19 +61,19 @@ public class VelociyAlert {
 
 	public static List getEntityList2()
 	{
-		List entityList = new ArrayList<>();
-		Map entity = new HashMap<>();
+		List entityList = new ArrayList();
+		Map entity = new HashMap();
 		entity.put("name", "ACCOUNT_TABLE");
-		List columns = new ArrayList<>();
+		List columns = new ArrayList();
 		Map col;
 		//column 1
-		col = new HashMap<>();
+		col = new HashMap();
 		col.put("LHS", "ACCOUNT_BAL");
 		col.put("condition", "<=");
 		col.put("RHS", "100");
 		columns.add(col);
 		//column 2
-		col = new HashMap<>();
+		col = new HashMap();
 		col.put("LHS", "BAL_DATE");
 		col.put("condition", "<=");
 		col.put("RHS", getCurrentDate());
@@ -71,10 +86,10 @@ public class VelociyAlert {
 
 	public static List getEntityList()
 	{
-		List entityList = new ArrayList<>();
+		List entityList = new ArrayList();
 		Entity entity = new Entity();
 		entity.setName("ACCOUNT_TABLE");
-		List columns = new ArrayList<>();
+		List columns = new ArrayList();
 		Column col;
 		//column 1
 		col = new Column();
