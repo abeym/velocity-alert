@@ -14,5 +14,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.0.0.RELEASE/spring-context-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.0.0.RELEASE/spring-expression-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tomcat_libs"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

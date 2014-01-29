@@ -1,10 +1,10 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div>
 	<H1>Rule Definition</H1>
-	<form:form ACTION="alert-submit.htm" method="POST" >
+	<form:form action="alert-submit.htm" method="POST" modelAttribute="alertForm">
 		<form:label path="message">Please enter the Message text that should be sent when this Alert is generated:</form:label>
 		<BR/>
-		<form:textarea path="message" rows=="5" cssStyle="width: 392px; height: 106px;" /> 
+		<form:textarea path="message" rows="5" cssStyle="width: 392px; height: 106px;" /> 
 		<BR/>
 
 		<form:label path="trigger">When should the Rule be Checked:</form:label>

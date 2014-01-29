@@ -16,7 +16,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<url>http://localhost:8580/manager/text</url>
+					<url>http://localhost:8080/manager/text</url>
 					<server>TomcatServer</server>
 					<path>/velocity-alert</path>
 				</configuration>

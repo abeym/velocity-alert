@@ -1,11 +1,19 @@
 package com.prowise.alert.model;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
-import org.apache.velocity.*;
-import org.apache.velocity.app.*;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
 
 
 public class VelocityAlert {

@@ -1,1 +1,1 @@
-<jsp:forward page="/controller-name" />
+<jsp:forward page="/alert-submit.htm" />

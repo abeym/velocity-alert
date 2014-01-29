@@ -23,12 +23,12 @@ public class AlertController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitAlertDef(@ModelAttribute(value="alertForm") AlertForm alertForm, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-		String rule = alertForm.getRule();
 		if(alertForm == null)
 		{
 			alertForm = new AlertForm();
 			model.addAttribute("alertForm", alertForm);
 		}
+		String rule = alertForm.getRule();
 		String vmPath = request.getSession().getServletContext().getRealPath("/");
 		VelocityAlert va = new VelocityAlert(vmPath);
 		String tmFile = "sqlTemplate.vm";
@@ -67,7 +67,12 @@ public class AlertController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getAlertDef(ModelMap model) {
+	public String getAlertDef(@ModelAttribute(value="alertForm") AlertForm alertForm, ModelMap model) {
+		if(alertForm == null)
+		{
+			alertForm = new AlertForm();
+			model.addAttribute("alertForm", alertForm);
+		}
 		return "alert";
 	}
 	
