@@ -1,4 +1,4 @@
-velocity-alert  https://travis-ci.org/abeym/velocity-alert.svg?branch=master
+velocity-alert  [![Build Status](https://travis-ci.org/abeym/velocity-alert.svg?branch=master)](https://travis-ci.org/abeym/velocity-alert)
 ==============
 
 To build use maven <br/>
